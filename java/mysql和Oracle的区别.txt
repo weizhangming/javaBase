@@ -1,0 +1,73 @@
+1.create table 
+	Create table tableName{
+	columnName  varchar，
+	columnName varchar，
+	}
+
+2drop table
+	(1)mysql    drop table if exists tableName
+	(2)oracle    drop tableName
+	(3)sql         drop tableName
+
+3.add 
+	(1)mysql     alter table tableName add column columnName varchar，(注 column可有可无)
+                                 alter table tableName add column columnName varchar，add column columnName varchar，
+	(2)oracle     alter table tableName add  columnName varchar，
+	                  alter table tableName add  （columnName varchar，columnName varchar）
+	(3)sql          alter table tableName add  columnName varchar，
+
+4.delete
+	(1)mysql     alter table tableName drop column columnName(注 column可有可无)
+                                 alter table tableName drop column columnName ，drop column columnName 
+	(2)oracle     alter table tableName drop columnName 
+	                  alter table tableName drop （columnName ，columnName ）
+	(3)sql          alter table tableName drop columnName 
+
+5.修改列名
+
+	(1)Oracle中，在列有数据的时候，无法修改列类型；没有数据时可以。
+	(2)MySQL中，无论列是否有数据都可以修改列类型
+	(3)Oracle   alter table tableName rename column columnOldName to columnOldName ;
+               (4)Mysql    alter table tableName change column columnNameOld columnNameNew columnType;
+
+ 
+
+
+MYSQL 
+
+修改数据类型
+alter table 表名 modify 列名 类型、
+
+修改列名
+alter table 表名 change 旧列名  新列名  类型
+
+删除列
+alter table 表名 drop 列名
+
+添加列
+alter table 表名 add 列名 类型 限制
+
+修改表名
+rename table 旧表名 to 新表名 
+
+
+
+
+
+oracle
+修改数据类型
+alter table 表名 modify 列名 类型、
+
+
+修改列名
+alter table 表名 reanme column 旧列名  to 新列名 
+
+删除列名
+alter table 表名 drop column 列名;
+
+添加列名
+alter table 表名 add 列名 类型 限制
+
+修改表名
+rename旧表名 to 新表名
+alter table 旧表名 rename to 新表名

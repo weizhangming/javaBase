@@ -1,0 +1,43 @@
+
+SELECT obd.OBDDetLsh OBDDetLsh, obd.OBDDetTimes OBDDetTimes, obd.DetEndDate DetEndDate,
+  CASE obd.checkResult WHEN '1' THEN '合格' WHEN '0' THEN '不合格' WHEN '' THEN '未检' END AS Evl,   
+obd.OBDCheckPensonnel OBDCheckPensonnel, LTRIM(RTRIM(PZLB.PZLB)) AS PZLB   from OBDCheckResultData obd  left  join CarInfo car on car.Car_Vin=obd.vehicleVin  left  join PZLB PZLB on PZLB.PZLBID=car.Car_PZLBID   
+Where 1=1  and obd.detEndDate>='2019-03-11' and obd.detEndDate<='2019-03-12'  Order By obd.OBDDetLsh DESC 
+MYSQL 
+
+修改数据类型
+alter table 表名 modify 列名 类型、
+
+修改列名
+alter table 表名 change 旧列名  新列名  类型
+
+删除列
+alter table 表名 drop 列名
+
+添加列
+alter table 表名 add 列名 类型 限制
+
+修改表名
+rename table 旧表名 to 新表名 
+
+
+
+
+
+oracle
+修改数据类型
+alter table 表名 modify 列名 类型、
+
+
+修改列名
+alter table 表名 reanme column 旧列名  to 新列名 
+
+删除列名
+alter table 表名 drop column 列名;
+
+添加列名
+alter table 表名 add 列名 类型 限制
+
+修改表名
+rename旧表名 to 新表名
+alter table 旧表名 rename to 新表名

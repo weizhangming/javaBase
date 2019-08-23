@@ -1,0 +1,57 @@
+先引入xmlns:p="http://www.springframework.org/schema/p"
+<bean id="user" name="user" class="com.boco.bean.User" p:name="zhang" p:age="20" p:car-ref="car">
+</bean>
+
+
+spring bean 创建方式
+1.无参构造函数
+<!--创建方法1：空参构造方法创建对象  -->
+	<!-- scope属性singleton 默认 单例对象 在容器中存在1个  -->
+	<!-- scope属性prototype  多例对象 调用时才创建，都是最新的   -->
+	<bean  name="user" class="com.boco.bean.User" scope="singleton" init-method="init" destroy-method="destroy"></bean>
+2.静态工厂
+<!--创建方法2：静态工厂创建对象  -->
+	<!--public static User createUser(){
+		System.out.println("静态工厂创建User");
+		return new User();
+		调用UserFactory的静态方法createUser创建对象
+	} -->
+	<bean  name="user2" class="com.boco.creat_method.UserFactory" factory-method="createUser"></bean>
+3.实例工厂
+	<!--创建方法2：实例工厂创建对象  -->
+	<!-- public  User createUser2(){
+		System.out.println("实例工厂创建User");
+		return new User();		
+	}
+	 -->	 
+	<bean  name="userFactory" class="com.boco.creat_method.UserFactory" ></bean>
+	<bean  name="user3" factory-bean="userFactory" class="com.boco.creat_method.UserFactory" factory-method="createUser2"></bean>
+	
+bean 注入方式
+<!-- 有参构造-->
+<!-- set注入 -->
+	<bean id="user" name="user" class="com.boco.bean.User">
+	<!-- 为user对象名为name属性注入为wei的值 -->
+		<property name="name" value="wei"></property>
+		<property name="age" value="18"></property>
+		<!-- 引用类型为car属性注入下面的属性 -->
+		<property name="car" ref="car"></property>
+	</bean>	
+	<bean name="car" class="com.boco.injection.Car">
+	<property name="name" value="大众"></property>
+	<property name="color" value="红色"></property>
+	</bean>
+	
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!-- p注入 -->
+	<bean id="user3" name="user" class="com.boco.bean.User" p:name="zhang" p:age="20" p:car-ref="car">
+	
+	</bean>
+	
+	
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!--spring expression luage-->
+	<bean  name="user4" class="com.boco.bean.User">
+	<property name="name" value="#{user.name}"></property>
+	<property name="car" ref="car"></property>
+	</bean>
